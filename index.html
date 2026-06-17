@@ -117,11 +117,24 @@ document.addEventListener("DOMContentLoaded", function() {
           <p>+32 498 71 54 53</p>
           <p>+32 467 58 23 11</p>
           <form name="contact" method="POST" data-netlify="true">
-            <label>Nom: <input type="text" name="name" required></label>
-            <label>Adresse email: <input type="email" name="email" required></label>
-            <label>Message: <textarea name="message" required></textarea></label>
+            <div>
+              <label>Nom:</label><br>
+              <input type="text" name="name" required>
+            </div>
+          
+            <div>
+              <label>Email adresse:</label><br>
+              <input type="email" name="email" required>
+            </div>
+          
+            <div>
+              <label>Bericht:</label><br>
+              <textarea name="message" required></textarea>
+            </div>
+          
             <button type="submit">Envoyer</button>
           </form>
+          
           
         </div>
         <div class="contact-section" style="margin-top:28px">
