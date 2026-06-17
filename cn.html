@@ -31,20 +31,23 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-  <div class="sheet">
-    <div class="lang-switch">
-  <a href="index.html" class="active">FR</a>
-  <a href="nl.html">NL</a>
-  <a href="en.html">EN</a>
-  <a href="es.html">ES</a>
-  <a href="pt.html">PT</a>
-  <a href="ln.html">LN</a>
-  <a href="cn.html">中文</a>
-  <a href="fi.html">FI</a>
-  <a href="de.html">DEU</a>
-  <a href="kg.html">KG</a>
-  <a href="lua.html">LUA</a>
-</div>
+<div class="sheet">
+  <div class="lang-switch">
+    <button class="lang-toggle" type="button" aria-label="Kies taal">☰</button>
+    <div class="lang-menu">
+      <a href="index.html" class="active">FR</a>
+      <a href="nl.html">NL</a>
+      <a href="en.html">EN</a>
+      <a href="es.html">ES</a>
+      <a href="pt.html">PT</a>
+      <a href="ln.html">LN</a>
+      <a href="cn.html">中文</a>
+      <a href="fi.html">FI</a>
+      <a href="de.html">DEU</a>
+      <a href="kg.html">KG</a>
+      <a href="lua.html">LUA</a>
+    </div>
+  </div>
 
     <header class="header">
       <div class="kicker">你知道</div>
@@ -110,11 +113,14 @@ document.addEventListener("DOMContentLoaded", function() {
         <div class="badge white">TOUS LES MARDIS DE 17H30 À 20H</div>
       </div>
       
-      <div class="contacts">
-        <div></div>
-        <div>RUE MASUI 128, 1030 BRUXELLES</div>
+      <div class="globe-panel">
+        <iframe
+          class="globe-frame"
+          src="globe.html"
+          title="Carte du monde avec points lumineux"
+          loading="lazy"
+        ></iframe>
       </div>
-    </footer>
 
     <section class="contact-media">
       <div>

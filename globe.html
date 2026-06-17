@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <title>3D Globe (Clean Version)</title>
+  <style>
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    body {
+      margin: 0;
+      background: #06183a;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    #globe {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+
+<div id="globe"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/topojson@3"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/globe.gl@2.33.1/dist/globe.gl.min.js"></script>
+
+<script>
+  const locations = [
+    { lat: 45.4215, lng: -75.6972 }, // Ottawa
+    { lat: 42.9849, lng: -81.2453 },
+    { lat: 60.1699, lng: 24.9384 },
+    { lat: 50.8503, lng: 4.3517 },
+    { lat: 48.8566, lng: 2.3522 },
+    { lat: 5.3453, lng: -4.0244 },
+    { lat: 6.1725, lng: 1.2314 },
+    { lat: -4.4419, lng: 15.2663 },
+    { lat: -4.2634, lng: 15.2429 },
+    { lat: -4.7692, lng: 11.8664 },
+    { lat: -8.8390, lng: 13.2894 }, // Luanda
+    { lat: -10.7140, lng: 25.4667 },
+    { lat: -18.8792, lng: 47.5079 },
+    { lat: -21.3393, lng: 55.4781 }
+  ];
+
+  const THEMES = {
+    subtle: {
+      ocean: "#05121f",
+      stroke: "rgba(185, 185, 185, 0.22)",
+      polygonCap: "rgba(205, 205, 205, 0.08)",
+      polygonSide: "rgba(170, 170, 170, 0.05)",
+      light: "#EA8E4A",
+      haloStops: [
+        [0, "rgba(255, 228, 185, 0.8)"],
+        [0.14, "rgba(234, 142, 74, 0.45)"],
+        [0.45, "rgba(234, 142, 74, 0.14)"],
+        [1, "rgba(234, 142, 74, 0)"]
+      ],
+      coreStops: [
+        [0, "rgba(255, 255, 255, 1)"],
+        [0.2, "rgba(255, 218, 168, 0.9)"],
+        [0.52, "rgba(234, 142, 74, 0.45)"],
+        [1, "rgba(234, 142, 74, 0)"]
+      ],
+      haloScale: 15,
+      coreScale: 4.2,
+      pointIntensity: 1.7,
+      pointDistance: 24
+    },
+    cinematic: {
+      ocean: "#020C16",
+      stroke: "rgba(168, 168, 168, 0.28)",
+      polygonCap: "rgba(196, 196, 196, 0.1)",
+      polygonSide: "rgba(160, 160, 160, 0.06)",
+      light: "#F2873D",
+      haloStops: [
+        [0, "rgba(255, 228, 180, 0.95)"],
+        [0.12, "rgba(242, 135, 61, 0.62)"],
+        [0.35, "rgba(242, 135, 61, 0.24)"],
+        [0.65, "rgba(242, 135, 61, 0.07)"],
+        [1, "rgba(242, 135, 61, 0)"]
+      ],
+      coreStops: [
+        [0, "rgba(255, 255, 255, 1)"],
+        [0.15, "rgba(255, 205, 140, 0.98)"],
+        [0.4, "rgba(242, 135, 61, 0.6)"],
+        [1, "rgba(242, 135, 61, 0)"]
+      ],
+      haloScale: 18,
+      coreScale: 5,
+      pointIntensity: 2.2,
+      pointDistance: 28
+    },
+    highContrast: {
+      ocean: "#01070f",
+      stroke: "rgba(210, 210, 210, 0.36)",
+      polygonCap: "rgba(220, 220, 220, 0.16)",
+      polygonSide: "rgba(195, 195, 195, 0.1)",
+      light: "#FF8A2A",
+      haloStops: [
+        [0, "rgba(255, 242, 210, 1)"],
+        [0.1, "rgba(255, 138, 42, 0.75)"],
+        [0.32, "rgba(255, 138, 42, 0.32)"],
+        [0.62, "rgba(255, 138, 42, 0.12)"],
+        [1, "rgba(255, 138, 42, 0)"]
+      ],
+      coreStops: [
+        [0, "rgba(255, 255, 255, 1)"],
+        [0.12, "rgba(255, 222, 170, 1)"],
+        [0.34, "rgba(255, 138, 42, 0.74)"],
+        [1, "rgba(255, 138, 42, 0)"]
+      ],
+      haloScale: 20,
+      coreScale: 5.8,
+      pointIntensity: 2.8,
+      pointDistance: 32
+    }
+  };
+
+  // Kies hier: "subtle", "cinematic", "highContrast"
+  const THEME_NAME = "highContrast";
+  const theme = THEMES[THEME_NAME];
+
+  const FLYER_BG = "#06183A";
+  const OCEAN = theme.ocean;
+  const GRAY_STROKE = theme.stroke;
+  const LIGHT = theme.light;
+
+  function makeGlowTexture(stops) {
+    const size = 256;
+    const canvas = document.createElement("canvas");
+    canvas.width = size;
+    canvas.height = size;
+    const ctx = canvas.getContext("2d");
+    const g = ctx.createRadialGradient(size / 2, size / 2, 0, size / 2, size / 2, size / 2);
+    stops.forEach(([offset, color]) => g.addColorStop(offset, color));
+    ctx.fillStyle = g;
+    ctx.fillRect(0, 0, size, size);
+    const tex = new THREE.CanvasTexture(canvas);
+    tex.needsUpdate = true;
+    return tex;
+  }
+
+  const haloMaterial = new THREE.SpriteMaterial({
+    map: makeGlowTexture(theme.haloStops),
+    transparent: true,
+    blending: THREE.AdditiveBlending,
+    depthWrite: false
+  });
+
+  const coreMaterial = new THREE.SpriteMaterial({
+    map: makeGlowTexture(theme.coreStops),
+    transparent: true,
+    blending: THREE.AdditiveBlending,
+    depthWrite: false
+  });
+
+  function createLightGlow() {
+    const group = new THREE.Group();
+    const halo = new THREE.Sprite(haloMaterial);
+    halo.scale.set(theme.haloScale, theme.haloScale, 1);
+    const core = new THREE.Sprite(coreMaterial);
+    core.scale.set(theme.coreScale, theme.coreScale, 1);
+    group.add(halo);
+    group.add(core);
+    return group;
+  }
+
+  const globe = Globe()
+    (document.getElementById("globe"))
+    .globeImageUrl(null)
+    .globeMaterial(new THREE.MeshPhongMaterial({
+      color: OCEAN,
+      emissive: "#010810",
+      emissiveIntensity: 0.05,
+      shininess: 18,
+      specular: "#0a1e2e"
+    }))
+    .showAtmosphere(false)
+    .backgroundColor(FLYER_BG);
+
+  const scene = globe.scene();
+  scene.add(new THREE.AmbientLight(0x334455, 0.45));
+  const dir = new THREE.DirectionalLight(0xaabbcc, 0.35);
+  dir.position.set(5, 3, 5);
+  scene.add(dir);
+
+  fetch("https://unpkg.com/world-atlas@2/countries-110m.json")
+    .then(res => res.json())
+    .then(worldData => {
+      globe
+        .polygonsData(topojson.feature(worldData, worldData.objects.countries).features)
+        .polygonCapColor(() => theme.polygonCap)
+        .polygonSideColor(() => theme.polygonSide)
+        .polygonStrokeColor(() => GRAY_STROKE)
+        .polygonAltitude(0.002);
+    });
+
+  globe.onGlobeReady(() => {
+    locations.forEach(d => {
+      const pos = globe.getCoords(d.lat, d.lng, 0.004);
+      const lamp = new THREE.PointLight(LIGHT, theme.pointIntensity, theme.pointDistance, 2);
+      lamp.position.copy(pos);
+      scene.add(lamp);
+    });
+
+    globe
+      .customLayerData(locations)
+      .customThreeObject(createLightGlow)
+      .customThreeObjectUpdate((obj, d) => {
+        obj.position.copy(globe.getCoords(d.lat, d.lng, 0.004));
+      });
+  });
+
+  globe.controls().autoRotate = true;
+  globe.controls().autoRotateSpeed = 0.8;
+</script>
+
+</body>
+</html>

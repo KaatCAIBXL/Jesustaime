@@ -1,164 +1,150 @@
+/* -------------------------------------- */
+/* ROOT KLEUREN */
+/* -------------------------------------- */
+:root {
+  --darknavy: #06183a;
+  --navy: #003252; /* blijft bestaan voor accenten */
+  --gray: #6D7974;
+  --beige: #DFC9A5;
+  --orange: #d8872a;
+  --darkorange: #E05215;
+  --olive: #4B6B38;
+  --lichtgroen: #B6CF4F;
+  --white: #ffffff;
+  --bg: #f7f5f0;
+}
+
+/* -------------------------------------- */
+/* LANGUAGE SWITCH */
+/* -------------------------------------- */
 .lang-switch {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 18px;
-  padding: 18px 0;
-  background: #06183a; /* zelfde donkerblauw als jouw flyer */
+  padding: 18px 20px;
+  background: var(--darknavy);
   font-family: Montserrat, sans-serif;
   font-weight: 700;
   font-size: 14px;
   letter-spacing: 1px;
+  position: relative;
+}
+
+.lang-menu {
+  display: flex;
+  gap: 18px;
 }
 
 .lang-switch a {
-  color: #d6dbe8; /* lichtgrijs zoals op jouw screenshot */
+  color: #d6dbe8;
   text-decoration: none;
   transition: 0.2s;
 }
 
-.lang-switch a:hover {
+.lang-switch a:hover,
+.lang-switch a.active {
   color: #ffffff;
 }
 
-.lang-switch a.active {
-  color: #ffffff; /* actieve taal = wit */
+.lang-toggle {
+  display: none;
+  background: transparent;
+  border: 1px solid #d6dbe8;
+  color: #d6dbe8;
+  border-radius: 4px;
+  padding: 6px 10px;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  position: relative;
+  z-index: 20;
 }
 
- :root{
-      --navy:#06183a;
-      --navy-2:#071a3f;
-      --orange:#d8872a;
-      --white:#ffffff;
-      --muted:#d6dbe8;
-      --container:680px;
-    }
-    html,body{height:auto;}
-    body{
-      margin:0;
-      background:var(--navy);
-      color:var(--white);
-      font-family:Montserrat,system-ui,Arial;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      display:flex;
-      justify-content:center;
-      padding:30px 20px;
-      min-height:100vh;
-    }
-    .sheet{
-      width:100%;
-      max-width:var(--container);
-      background:linear-gradient(180deg,var(--navy) 0%, #04102a 100%);
-      border-radius:8px;
-      overflow:visible;
-      box-shadow:0 18px 50px rgba(0,0,0,0.6);
-    }
+/* -------------------------------------- */
+/* BODY */
+/* -------------------------------------- */
+html, body {
+  height: auto;
+}
 
-    /* Header */
-    .header{
-      padding:60px 40px 40px;
-      text-align:center;
-      position:relative;
-    }
-    .kicker{font-family:Montserrat, system-ui; color:var(--orange); font-weight:700; letter-spacing:2px; margin-bottom:12px; font-size:18px; text-transform:uppercase}
-    .title{font-family:Montserrat, system-ui; font-weight:800; font-size:54px; line-height:0.9; color:var(--white); letter-spacing:-1px; text-transform:uppercase}
-    .title .q{color:var(--orange); margin-left:8px}
+body {
+  margin: 0;
+  background: var(--darknavy); /* JOUW WENS */
+  color: var(--white);
+  font-family: Montserrat, system-ui, Arial;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  justify-content: center;
+  padding: 30px 20px;
+  min-height: 100vh;
+}
 
-    .lead{
-      max-width:520px;
-      margin:22px auto 0;
-      color:var(--muted);
-      font-size:14px;
-      line-height:1.6;
-      text-align:center;
-    }
-    .verse{color:var(--orange); font-weight:700; margin-top:12px; font-size:13px}
+/* -------------------------------------- */
+/* FLYER CONTAINER */
+/* -------------------------------------- */
+.sheet {
+  width: 100%;
+  max-width: var(--container);
+  background: var(--darknavy); /* FIX: geen navy gradient meer */
+  border-radius: 8px;
+  overflow: visible;
+  box-shadow: 0 18px 50px rgba(0,0,0,0.6);
+}
 
-    /* Orange CTA band */
-    .band{
-      position: relative;
-      z-index: 3;
-      background:var(--orange);
-      padding:22px 24px;
-      text-align:center;
-      color:var(--white);
-      font-weight:700;
-      font-size:18px;
-      text-transform:uppercase;
-      border-radius:28px 28px 0 0;
-      margin:0 24px 0 24px;
-    }
+/* -------------------------------------- */
+/* HEADER */
+/* -------------------------------------- */
+.header {
+  padding: 60px 40px 40px;
+  text-align: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-    /* White card with wave top */
-    .card{
-      position: relative;
-      z-index: 1;
-      background:#fff;
-      color:#0b1a33;
-      border-bottom-left-radius:8px;
-      border-bottom-right-radius:8px;
-      margin:0 24px 24px 24px;
-      padding:28px 28px 40px;
-      box-shadow:0 10px 30px rgba(2,10,30,0.3);
-    }
-    /* decorative wave */
-    .card:before{
-      content:'';
-      display:block;
-      height:40px;
-      margin-top:-36px;
-      background:linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 100%);
-    }
+.kicker {
+  color: var(--orange);
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+  font-size: 18px;
+  text-transform: uppercase;
+}
 
-    .steps{display:flex;flex-direction:column;gap:18px}
-    .step{
-      display:flex;gap:16px;align-items:flex-start
-    }
-    .num{
-      min-width:44px;height:44px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;flex-shrink:0
-    }
-    .step h4{margin:0 0 8px;font-size:15px;font-weight:800}
-    .step p{margin:0;color:#123;line-height:1.5;font-size:13px}
+.title {
+  font-weight: 800;
+  font-size: 54px;
+  line-height: 0.9;
+  color: var(--white);
+  letter-spacing: -1px;
+  text-transform: uppercase;
+}
 
-    /* Footer church block */
-    .church{
-      background:linear-gradient(180deg,var(--navy) 0%, #05162f 100%);
-      color:var(--muted);
-      padding:50px 40px;
-      text-align:center;
-      margin-top:0;
-    }
-    .church h3{color:var(--white);margin:0 0 24px;font-size:28px;font-weight:800;text-transform:uppercase;letter-spacing:1px}
-    .church > p{max-width:520px;margin:0 auto 28px;color:var(--white);font-size:16px;line-height:1.6;font-weight:600}
-    .church .find-us{color:var(--orange);margin:28px 0 24px;font-size:22px;font-weight:800;text-transform:uppercase}
-    .badges{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px}
-    .badge{padding:16px 12px;font-weight:700;font-size:14px;text-transform:uppercase}
-    .badge.orange{background:var(--orange);color:var(--white)}
-    .badge.white{background:#fff;color:var(--navy)}
-    .contact-media{
-      background:var(--navy);
-      color:var(--white);
-      padding:40px 40px;
-      display:flex;
-      justify-content:flex-start;
-      gap:40px;
-      margin-top:0;
-    }
-    .contact-section h4{margin:0 0 18px;font-size:20px;font-weight:800;text-transform:uppercase;letter-spacing:1px}
-    .contact-section p{margin:8px 0;font-size:14px;color:var(--muted)}
-    .media-links{display:flex;flex-direction:column;gap:12px}
-    .media-link{display:flex;align-items:center;gap:12px;font-size:14px}
-    .media-link .icon{font-size:20px;min-width:24px}
-    .media-link .box{background:var(--orange);color:var(--white);padding:6px 14px;border-radius:4px;font-weight:700}
-    .follow-text{font-family:'Brush Script MT', cursive;font-size:32px;color:var(--white);font-style:italic;text-align:right;align-self:center}
+.title .q {
+  color: var(--orange);
+  margin-left: 8px;
+}
 
-    /* Responsive */
-    @media (max-width:520px){
-      .title{font-size:36px}
-      .sheet{padding-bottom:20px}
-      .card{margin:0 14px;padding:18px}
-      .header{padding:40px 20px 20px}
-    }
+.lead {
+  max-width: 520px;
+  margin: 22px auto 0;
+  color: var(--white);
+  font-size: 14px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.verse {
+  color: var(--orange);
+  font-weight: 700;
+  margin-top: 12px;
+  font-size: 13px;
+}
+
+/* TYPEWRITER */
 .typewriter {
   font-weight: 800;
   font-size: 54px;
@@ -167,25 +153,247 @@
   color: #ffffff;
   white-space: nowrap;
   overflow: hidden;
-  border-right: 3px solid #d8872a;
+  border-right: 3px solid var(--orange);
   display: inline-block;
-  margin-bottom: 40px; /* extra ruimte onder de titel */
+  margin-bottom: 40px;
   animation: blink .7s infinite;
 }
 
 @keyframes blink {
-  0% { border-color: #d8872a }
-  50% { border-color: transparent }
-  100% { border-color: #d8872a }
+  0% { border-color: var(--orange); }
+  50% { border-color: transparent; }
+  100% { border-color: var(--orange); }
 }
 
-.header {
-  min-height: 100vh;        /* vult het hele scherm */
+/* -------------------------------------- */
+/* ORANGE CTA BAND */
+/* -------------------------------------- */
+.band {
+  background: var(--orange);
+  padding: 22px 24px;
+  text-align: center;
+  color: var(--white);
+  font-weight: 700;
+  font-size: 18px;
+  text-transform: uppercase;
+  border-radius: 28px 28px 0 0;
+  margin: 0 24px;
+}
+
+/* -------------------------------------- */
+/* WHITE CARD */
+/* -------------------------------------- */
+.card {
+  background: #fff;
+  color: var(--darknavy);
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  margin: 0 24px 24px;
+  padding: 28px 28px 40px;
+  box-shadow: 0 10px 30px rgba(2,10,30,0.3);
+}
+
+.card:before {
+  content: '';
+  display: block;
+  height: 40px;
+  margin-top: -36px;
+}
+
+/* -------------------------------------- */
+/* STEPS */
+/* -------------------------------------- */
+.steps {
   display: flex;
   flex-direction: column;
-  justify-content: center;  /* centreert verticaal */
-  align-items: center;      /* centreert horizontaal */
-  text-align: center;
-  padding-top: 0;
-  padding-bottom: 0;
+  gap: 18px;
 }
+
+.step {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.num {
+  min-width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--navy);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 16px;
+}
+
+/* -------------------------------------- */
+/* FOOTER CHURCH */
+/* -------------------------------------- */
+.church {
+  background: var(--darknavy);
+  padding: 50px 40px;
+  text-align: center;
+}
+
+.church h3 {
+  color: var(--white);
+  margin: 0 0 24px;
+  font-size: 28px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.church > p {
+  max-width: 520px;
+  margin: 0 auto 28px;
+  color: var(--white);
+  font-size: 16px;
+  line-height: 1.6;
+  font-weight: 600;
+}
+
+.find-us {
+  color: var(--orange);
+  margin: 28px 0 24px;
+  font-size: 22px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+/* -------------------------------------- */
+/* EMBASSY GRID */
+/* -------------------------------------- */
+.embassy-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 20px;
+  padding: 40px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* COMPACT NAVY CARDS */
+.embassy-card {
+  background: var(--darknavy); /* FIX: darknavy */
+  color: var(--beige);
+  padding: 18px 20px;
+  border: 2px solid var(--orange);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+  transition: 0.25s ease;
+  min-height: 120px;
+}
+
+.embassy-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.20);
+}
+
+.embassy-card h2 {
+  margin: 0;
+  font-size: 1.3rem;
+  color: var(--beige);
+}
+
+.city {
+  font-size: 0.95rem;
+  color: var(--orange);
+  margin-bottom: 6px;
+}
+
+.address,
+.phone {
+  font-size: 0.9rem;
+}
+
+.address {
+  color: var(--gray);
+  margin-bottom: 3px;
+}
+
+.phone {
+  color: var(--olive);
+  font-weight: 600;
+}
+
+/* -------------------------------------- */
+/* RESPONSIVE */
+/* -------------------------------------- */
+@media (max-width:520px){
+  .sheet { padding-bottom: 20px; }
+  .card { margin: 0 14px; padding: 18px; }
+  .band { margin: 0 14px; }
+  .header { padding: 32px 20px 24px; }
+  .title, .typewriter { font-size: 28px; line-height: 1.1; }
+  .typewriter { white-space: normal; border-right-width: 2px; margin-bottom: 24px; }
+
+  .lang-switch { justify-content: flex-end; padding: 12px 16px; }
+  .lang-toggle { display: block; border: none; padding: 4px 8px; font-size: 22px; }
+
+  .lang-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 16px;
+    background: var(--darknavy);
+    padding: 10px 16px;
+    border-radius: 4px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    flex-direction: column;
+    gap: 10px;
+    z-index: 30;
+  }
+
+  .lang-switch.open .lang-menu { display: flex; }
+}
+/* -------------------------------------- */
+/* GLOBE PANEL (NIEUW & PERFECT) */
+/* -------------------------------------- */
+
+.globe-panel {
+  width: 100%;
+  max-width: 700px;
+  margin: 10px auto;   /* veel minder ruimte */
+  background: transparent;
+  border: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.globe-frame {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border: none !important;
+  outline: none !important;
+  background: transparent;
+  display: block;
+}
+
+.badges {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.badge {
+  padding: 16px 12px;
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  text-align: center;
+  border-radius: 6px;
+}
+
+.badge.orange {
+  background: var(--orange);
+  color: var(--white);
+}
+
+.badge.white {
+  background: var(--white);
+  color: var(--darknavy);
+}
+

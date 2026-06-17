@@ -33,18 +33,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
   <div class="sheet">
     <div class="lang-switch">
-  <a href="index.html" class="active">FR</a>
-  <a href="nl.html">NL</a>
-  <a href="en.html">EN</a>
-  <a href="es.html">ES</a>
-  <a href="pt.html">PT</a>
-  <a href="ln.html">LN</a>
-  <a href="cn.html">中文</a>
-  <a href="fi.html">FI</a>
-  <a href="de.html">DEU</a>
-  <a href="kg.html">KG</a>
-  <a href="lua.html">LUA</a>
-</div>
+      <button class="lang-toggle" type="button" aria-label="Kies taal">☰</button>
+      <div class="lang-menu">
+        <a href="index.html" class="active">FR</a>
+        <a href="nl.html">NL</a>
+        <a href="en.html">EN</a>
+      </div>
+    </div>
 
     <header class="header">
       <div class="kicker">SAIS‑TU QUE</div>
@@ -93,8 +88,8 @@ document.addEventListener("DOMContentLoaded", function() {
       </div>
 
       <p style="margin-top:18px;color:#0b1a33;font-weight:600">Nous recevons la vie éternelle en ouvrant notre cœur à Jésus et en L'acceptent comme Seigneur et Sauveur.</p>
-      <p style="color:#0b1a33;margin-top:12px"><strong>Jésus a déclaré:</strong> <em>"Je suis le chemin, la vérité, et la vie. Nul ne vient au Père que par moi."</em> (Jean 14:6)</p>
-      <p style="color:#0b1a33;margin-top:12px;font-size:13px">Il est venu sur terre, a versé Son sang et est mort sur la croix pour tes péchés. Par la foi, tu peux être pardonné et recevoir la vie éternelle gratuitement, car il a payé le prix de ton salut. En l'acceptant dans ton cœur, Son sang purifie tous tes péchés, et tu deviens juste devant Dieu. (Romains 4:7)</p>
+      <p><strong>Jésus a déclaré:</strong> <em>"Je suis le chemin, la vérité, et la vie. Nul ne vient au Père que par moi."</em> (Jean 14:6)</p>
+      <p>Il est venu sur terre, a versé Son sang et est mort sur la croix pour tes péchés. Par la foi, tu peux être pardonné et recevoir la vie éternelle gratuitement, car il a payé le prix de ton salut. En l'acceptant dans ton cœur, Son sang purifie tous tes péchés, et tu deviens juste devant Dieu. (Romains 4:7)</p>
     </section>
 
     <footer class="church">
@@ -110,10 +105,9 @@ document.addEventListener("DOMContentLoaded", function() {
         <div class="badge white">TOUS LES MARDIS DE 17H30 À 20H</div>
       </div>
       
-      <div class="contacts">
-        <div></div>
-        <div>RUE MASUI 128, 1030 BRUXELLES</div>
-      </div>
+      
+   
+  
     </footer>
 
     <section class="contact-media">
@@ -122,7 +116,13 @@ document.addEventListener("DOMContentLoaded", function() {
           <h4>CONTACTS</h4>
           <p>+32 498 71 54 53</p>
           <p>+32 467 58 23 11</p>
-          <p>secretariat@sanctuairejoseph.org</p>
+          <form name="contact" method="POST" data-netlify="true">
+            <label>Nom: <input type="text" name="name" required></label>
+            <label>Adresse email: <input type="email" name="email" required></label>
+            <label>Message: <textarea name="message" required></textarea></label>
+            <button type="submit">Envoyer</button>
+          </form>
+          
         </div>
         <div class="contact-section" style="margin-top:28px">
           <h4>MÉDIA</h4>
@@ -148,20 +148,29 @@ document.addEventListener("DOMContentLoaded", function() {
     </section>
   </div>
   <script>
-  const buttons = document.querySelectorAll('.lang-switch button');
-  const sections = document.querySelectorAll('.lang');
+  document.addEventListener('DOMContentLoaded', function () {
+    const langSwitch = document.querySelector('.lang-switch');
+    const toggle = document.querySelector('.lang-toggle');
+    const menu = document.querySelector('.lang-menu');
 
-  buttons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const lang = btn.dataset.lang;
+    if (!langSwitch || !toggle || !menu) return;
 
-      buttons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
+    toggle.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      langSwitch.classList.toggle('open');
+    });
 
-      sections.forEach(sec => sec.style.display = 'none');
-      document.querySelector('.lang-' + lang).style.display = 'block';
+    // close when clicking outside
+    document.addEventListener('click', function (e) {
+      if (!langSwitch.contains(e.target)) langSwitch.classList.remove('open');
+    });
+
+    // close when selecting a language
+    menu.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => langSwitch.classList.remove('open'));
     });
   });
-</script>
+  </script>
 </body>
 </html>
