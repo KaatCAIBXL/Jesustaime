@@ -1,0 +1,74 @@
+<div class="social-grid">
+
+    <a class="social-card" href="https://www.instagram.com/ministereimpact/" target="_blank">
+      <img class="avatar" src="profiles/instagram.jpg" alt="Instagram profiel">
+      <p>@ministereimpact</p>
+    </a>
+  
+    <a class="social-card" href="https://www.tiktok.com/@ministereimpact" target="_blank">
+      <img class="avatar" src="profiles/tiktok.jpeg" alt="TikTok profiel">
+      <p>@ministereimpact</p>
+    </a>
+  
+    <a class="social-card" href="https://www.youtube.com/@ministereimpact" target="_blank">
+      <img class="avatar" src="profiles/youtube.jpg" alt="YouTube profiel">
+      <p>@ministereimpact</p>
+    </a>
+  
+    <a class="social-card" href="https://facebook.com/ministereimpact" target="_blank">
+      <img class="avatar" src="profiles/facebook.jpg" alt="Facebook profiel">
+      <p>Ministère Impact</p>
+    </a>
+  
+    <a class="social-card" href="https://www.facebook.com/ImpactMinistere" target="_blank">
+      <img class="avatar" src="profiles/whatsapp.png" alt="WhatsApp kanaal">
+      <p>WhatsApp Kanaal</p>
+    </a>
+  
+  </div>
+  
+  
+<style>
+.social-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  padding: 20px;
+}
+
+.social-card {
+  background: #ffffff10;
+  border: 1px solid #ffffff20;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  color: var(--white);
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.social-card:hover {
+  background: var(--orange);
+  transform: translateY(-4px);
+}
+
+.social-card .avatar {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+@media (max-width: 600px) {
+  .social-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 400px) {
+  .social-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+  </style>  

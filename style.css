@@ -3,7 +3,7 @@
 /* -------------------------------------- */
 :root {
   --darknavy: #06183a;
-  --navy: #003252; /* blijft bestaan voor accenten */
+  --navy: #003252; 
   --gray: #6D7974;
   --beige: #DFC9A5;
   --orange: #d8872a;
@@ -37,21 +37,21 @@
 }
 
 .lang-switch a {
-  color: #d6dbe8;
+  color:var(--bg);
   text-decoration: none;
   transition: 0.2s;
 }
 
 .lang-switch a:hover,
 .lang-switch a.active {
-  color: #ffffff;
+  color: var(--bg);
 }
 
 .lang-toggle {
   display: none;
   background: transparent;
-  border: 1px solid #d6dbe8;
-  color: #d6dbe8;
+  border: 1px solid var(--bg);
+  color: var(--bg);
   border-radius: 4px;
   padding: 6px 10px;
   font-size: 18px;
@@ -70,7 +70,7 @@ html, body {
 
 body {
   margin: 0;
-  background: var(--darknavy); /* JOUW WENS */
+  background: var(--darknavy); 
   color: var(--white);
   font-family: Montserrat, system-ui, Arial;
   -webkit-font-smoothing: antialiased;
@@ -87,7 +87,7 @@ body {
 .sheet {
   width: 100%;
   max-width: var(--container);
-  background: var(--darknavy); /* FIX: geen navy gradient meer */
+  background: var(--darknavy); 
   border-radius: 8px;
   overflow: visible;
   box-shadow: 0 18px 50px rgba(0,0,0,0.6);
@@ -137,13 +137,6 @@ body {
   text-align: center;
 }
 
-.verse {
-  color: var(--orange);
-  font-weight: 700;
-  margin-top: 12px;
-  font-size: 13px;
-}
-
 /* TYPEWRITER */
 .typewriter {
   font-weight: 800;
@@ -157,6 +150,10 @@ body {
   display: inline-block;
   margin-bottom: 40px;
   animation: blink .7s infinite;
+}
+
+.media-link {
+  margin-bottom: 10px
 }
 
 @keyframes blink {
@@ -239,7 +236,7 @@ body {
 
 .church h3 {
   color: var(--white);
-  margin: 0 0 24px;
+  margin: 0 0 10px;
   font-size: 28px;
   font-weight: 800;
   text-transform: uppercase;
@@ -253,74 +250,75 @@ body {
   line-height: 1.6;
   font-weight: 600;
 }
-
-.find-us {
-  color: var(--orange);
-  margin: 28px 0 24px;
-  font-size: 22px;
-  font-weight: 800;
-  text-transform: uppercase;
-}
-
-/* -------------------------------------- */
-/* EMBASSY GRID */
-/* -------------------------------------- */
-.embassy-grid {
+.social-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 20px;
-  padding: 40px;
-  max-width: 1200px;
-  margin: auto;
+  width: 100%;
 }
 
-/* COMPACT NAVY CARDS */
-.embassy-card {
-  background: var(--darknavy); /* FIX: darknavy */
-  color: var(--beige);
-  padding: 18px 20px;
-  border: 2px solid var(--orange);
-  box-shadow: 0 4px 14px rgba(0,0,0,0.15);
-  transition: 0.25s ease;
-  min-height: 120px;
+.social-card {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #ffffff10;
+  border: 1px solid #ffffff20;
+  padding: 20px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: var(--white);
+  box-sizing: border-box;
 }
 
-.embassy-card:hover {
+
+
+.social-card:hover {
+  background: var(--orange);
   transform: translateY(-4px);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.20);
 }
 
-.embassy-card h2 {
-  margin: 0;
-  font-size: 1.3rem;
-  color: var(--beige);
+.top-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 12px;
 }
 
-.city {
-  font-size: 0.95rem;
-  color: var(--orange);
-  margin-bottom: 6px;
+.platform-icon {
+  width: 22px;
+  height: 22px;
+  
 }
 
-.address,
-.phone {
-  font-size: 0.9rem;
+.platform-name {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--white);
+  
 }
 
-.address {
-  color: var(--gray);
-  margin-bottom: 3px;
+.avatar {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+.avatar_logo {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  margin-bottom: 10px;
 }
 
-.phone {
-  color: var(--olive);
-  font-weight: 600;
-}
+
 
 /* -------------------------------------- */
-/* RESPONSIVE */
+/* telefoon responsive
 /* -------------------------------------- */
-@media (max-width:520px){
+@media (max-width:600px){
   .sheet { padding-bottom: 20px; }
   .card { margin: 0 14px; padding: 18px; }
   .band { margin: 0 14px; }
@@ -347,9 +345,6 @@ body {
 
   .lang-switch.open .lang-menu { display: flex; }
 }
-/* -------------------------------------- */
-/* GLOBE PANEL (NIEUW & PERFECT) */
-/* -------------------------------------- */
 
 .globe-panel {
   width: 100%;
@@ -375,7 +370,7 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
-  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .badge {
@@ -396,4 +391,42 @@ body {
   background: var(--white);
   color: var(--darknavy);
 }
+
+.contact-media {
+  padding: 36px;
+}
+
+.contact-media input,
+.contact-media textarea {
+  width: 70%;
+  max-width: 320px;
+}
+button,
+input[type="submit"] {
+  background: var(--orange);
+  color: var(--white);
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  width: 70%;
+  transition: 0.2s ease;
+}
+
+button:hover,
+input[type="submit"]:hover {
+  background: #ff9f4d; /* iets lichtere oranje tint */
+  transform: translateY(-3px);
+}
+
+button:active,
+input[type="submit"]:active {
+  transform: translateY(0);
+}
+
+
+
+
 

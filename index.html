@@ -44,10 +44,12 @@ document.addEventListener("DOMContentLoaded", function() {
     <header class="header">
       <div class="kicker">SAIS‑TU QUE</div>
       <div class="title typewriter"></div>
-      <p class="lead">Le monde dans lequel nous vivons actuellement est frappé par plusieurs crises : crise sanitaire, crise financière, morale, sociale, identitaire, etc.</p>
-      <p class="lead">Au milieu de toutes ces crises, l'amour de Dieu pour nous reste notre seul secours, car c'est par l'amour de Dieu que nous avons accès à la vie éternelle.</p>
-      <div class="verse">JEAN 3:16 CAR DIEU A TANT AIMÉ LE MONDE, QU'IL A DONNÉ SON FILS UNIQUE, AFIN QUE QUICONQUE CROIT EN LUI NE PÉRISSE POINT, MAIS QU'IL AIT LA VIE ÉTERNELLE.</div>
-      <p class="lead">DIEU VEUT QUE NOUS AYONS TOUS LA VIE ÉTERNELLE, MAIS CELA N'EST POSSIBLE SEULEMENT PAR LA FOI EN JÉSUS-CHRIST.</p>
+      <div class="lead">
+      <p>Le monde dans lequel nous vivons actuellement est frappé par plusieurs crises : crise sanitaire, crise financière, morale, sociale, identitaire, etc.</p>
+      <p>Au milieu de toutes ces crises, l'amour de Dieu pour nous reste notre seul secours, car c'est par l'amour de Dieu que nous avons accès à la vie éternelle.</p>
+      <p style="color: var(--orange); font-weight: bold;">JEAN 3:16 CAR DIEU A TANT AIMÉ LE MONDE, QU'IL A DONNÉ SON FILS UNIQUE, AFIN QUE QUICONQUE CROIT EN LUI NE PÉRISSE POINT, MAIS QU'IL AIT LA VIE ÉTERNELLE.</p>
+      <p>DIEU VEUT QUE NOUS AYONS TOUS LA VIE ÉTERNELLE, MAIS CELA N'EST POSSIBLE SEULEMENT PAR LA FOI EN JÉSUS-CHRIST.</p>
+      </div>
     </header>
 
     <div class="band">Comment recevrais‑je donc la vie éternelle ?</div>
@@ -96,38 +98,32 @@ document.addEventListener("DOMContentLoaded", function() {
       <h3>NOUS SOMMES ...</h3>
       <p>Le Ministère Apostolique Impact (MAI), centre de réforme et d'adoration . Le Sanctuaire de Joseph, un église reconnaissant Jésus-Christ comme seul Seigneur est Sauveur.</p>
       
-      <div class="find-us">RETROUVEZ NOUS ...</div>
-      
+      <h3 style="color: var(--orange)">RETROUVEZ NOUS ...</h3>
       <div class="badges">
         <div class="badge orange">CULTES DU DIMANCHE</div>
         <div class="badge white">DE 9H À 12H ET DE 14H À 17H</div>
         <div class="badge orange">ÉCOLE FONDAMENTALE</div>
         <div class="badge white">TOUS LES MARDIS DE 17H30 À 20H</div>
       </div>
-      
-      
-   
-  
     </footer>
 
     <section class="contact-media">
       <div>
-        <div class="contact-section">
           <h4>CONTACTS</h4>
           <p>+32 498 71 54 53</p>
           <p>+32 467 58 23 11</p>
           <form name="contact" method="POST" data-netlify="true">
-            <div>
+            <div style="margin-bottom: 10px">
               <label>Nom:</label><br>
               <input type="text" name="name" required>
             </div>
           
-            <div>
+            <div style="margin-bottom: 10px">
               <label>Email adresse:</label><br>
               <input type="email" name="email" required>
             </div>
           
-            <div>
+            <div style="margin-bottom: 10px">
               <label>Bericht:</label><br>
               <textarea name="message" required></textarea>
             </div>
@@ -135,28 +131,66 @@ document.addEventListener("DOMContentLoaded", function() {
             <button type="submit">Envoyer</button>
           </form>
           
-          
-        </div>
-        <div class="contact-section" style="margin-top:28px">
           <h4>MÉDIA</h4>
           <div class="media-links">
-            <div class="media-link">
-              <div class="box">www.ministereimpact.org</div>
-            </div>
-            <div class="media-link">
-              <div class="box">@ministèreimpact</div>
-            </div>
-            <div class="media-link">
-              <div class="box">@ImpactMinistère</div>
-            </div>
-            <div class="media-link">
-              <div class="box">@ministèreimpact</div>
-            </div>
-            <div class="media-link">
-              <div class="box">@ministèreimpact</div>
-            </div>
+            <div class="social-grid">
+
+              <a class="social-card" href="https://www.instagram.com/ministereimpact/" target="_blank">
+                <div class="top-row">
+                  <img class="platform-icon" src="icons8-instagram-logo-32.png" alt="Instagram">
+                  <span class="platform-name">Instagram</span>
+                </div>
+                <img class="avatar" src="profiles/instagram.jpg" alt="Instagram profiel">
+                <p>@ministereimpact</p>
+              </a>
+            
+              <a class="social-card" href="https://www.tiktok.com/@ministereimpact" target="_blank">
+                <div class="top-row">
+                  <img class="platform-icon" src="icons8-tiktok-32.png" alt="TikTok">
+                  <span class="platform-name">TikTok</span>
+                </div>
+                <img class="avatar" src="profiles/tiktok.jpeg" alt="TikTok profiel">
+                <p>@ministereimpact</p>
+              </a>
+            
+              <a class="social-card" href="https://www.youtube.com/@ministereimpact" target="_blank">
+                <div class="top-row">
+                  <img class="platform-icon" src="icons8-youtube-32.png" alt="YouTube">
+                  <span class="platform-name">YouTube</span>
+                </div>
+                <img class="avatar" src="profiles/youtube.jpg" alt="YouTube profiel">
+                <p>@ministereimpact</p>
+              </a>
+            
+              <a class="social-card" href="https://facebook.com/ministereimpact" target="_blank">
+                <div class="top-row">
+                  <img class="platform-icon" src="icons8-facebook-32.png" alt="Facebook">
+                  <span class="platform-name">Facebook</span>
+                </div>
+                <img class="avatar" src="profiles/facebook.jpg" alt="Facebook profiel">
+                <p>Ministère Impact</p>
+              </a>
+            
+              <a class="social-card" href="https://www.facebook.com/ImpactMinistere" target="_blank">
+                <div class="top-row">
+                  <img class="platform-icon" src="icons8-whatsapp-32.png" alt="WhatsApp">
+                  <span class="platform-name">WhatsApp</span>
+                </div>
+                <img class="avatar" src="profiles/whatsapp.png" alt="WhatsApp kanaal">
+                <p>Impact CARE</p>
+              </a>
+
+              <a class="social-card" href="https://www.ministereimpact.org/" target="_blank">
+                <div class="top-row">
+                  <img class="platform-icon" src="icons8-website-32.png" alt="WhatsApp">
+                  <span class="platform-name">Site Web</span>
+                </div>
+                <img class="avatar_logo" src="profiles/logo.png" alt="WhatsApp kanaal">
+                <p>www.ministreimpact.org</p>
+              </a>
+
+            </div>            
           </div>
-        </div>
       </div>
     </section>
   </div>
