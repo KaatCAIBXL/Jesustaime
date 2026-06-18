@@ -238,6 +238,7 @@ body {
 /* FOOTER CHURCH */
 /* -------------------------------------- */
 .church {
+  display: block;
   background: var(--darknavy);
   padding: 50px 40px;
   text-align: center;
@@ -245,11 +246,15 @@ body {
 
 .church h3 {
   color: var(--white);
-  margin: 0 0 10px;
+  margin: 0 auto 10px;
   font-size: 28px;
   font-weight: 800;
   text-transform: uppercase;
+  text-align: center;
+  max-width: 520px;
+  display: block;
 }
+
 
 .church > p {
   max-width: 520px;
