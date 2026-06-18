@@ -213,8 +213,8 @@ body {
 }
 
 .num {
-  min-width: 44px;
-  height: 44px;
+  min-width: 37px;
+  height: 37px;
   border-radius: 50%;
   background: var(--navy);
   color: #fff;
@@ -223,6 +223,15 @@ body {
   justify-content: center;
   font-weight: 800;
   font-size: 16px;
+}
+.special {
+  color: var(--orange);
+  margin: 0  0px;
+  padding: 0 36px 0;
+  font-size: 70px;
+  font-weight: 400;
+  text-transform: uppercase;
+  font-family: Anton;
 }
 
 /* -------------------------------------- */
@@ -344,26 +353,6 @@ body {
   }
 
   .lang-switch.open .lang-menu { display: flex; }
-}
-
-.globe-panel {
-  width: 100%;
-  max-width: 700px;
-  margin: 10px auto;   /* veel minder ruimte */
-  background: transparent;
-  border: none;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-}
-
-.globe-frame {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  border: none !important;
-  outline: none !important;
-  background: transparent;
-  display: block;
 }
 
 .badges {
